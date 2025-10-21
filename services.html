@@ -3,36 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services</title>
+  <title>Our Services</title>
   <style>
     body {
       background-color: #0d0d0d;
-      color: #fff;
-      font-family: Arial, sans-serif;
+      color: white;
+      font-family: 'Poppins', sans-serif;
       text-align: center;
-      padding-top: 100px;
+      padding: 40px 20px;
     }
-    ul {
-      list-style: none;
-      padding: 0;
+    h2 {
+      margin-bottom: 30px;
+      font-size: 26px;
     }
-    li {
+    .service-btn {
       background-color: #1a1a1a;
-      margin: 10px auto;
+      color: white;
+      border: none;
+      border-radius: 12px;
       padding: 15px;
+      margin: 10px 0;
+      font-size: 18px;
       width: 80%;
-      border-radius: 10px;
+      max-width: 400px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .service-btn:hover {
+      background-color: #2b2b2b;
+    }
+    a {
+      color: #00bfff;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
   <h2>🛠️ Our Services</h2>
-  <ul>
-    <li>Instagram Followers</li>
-    <li>Facebook Likes</li>
-    <li>Twitter Views</li>
-    <li>TikTok Shares</li>
-  </ul>
-  <a href="menu.html" style="color:#00bcd4;text-decoration:none;">⬅ Back to Menu</a>
+
+  <button class="service-btn" onclick="location.href='instagram.html'">📸 Instagram Services</button>
+  <button class="service-btn" onclick="location.href='facebook.html'">📘 Facebook Services</button>
+  <button class="service-btn" onclick="location.href='twitter.html'">🐦 Twitter Services</button>
+  <button class="service-btn" onclick="location.href='tiktok.html'">🎵 TikTok Services</button>
+
+  <a href="menu.html">← Back to Menu</a>
 </body>
 </html>
