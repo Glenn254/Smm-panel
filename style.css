@@ -1,77 +1,118 @@
-/* General page styling */
+/* Kenya SMM Pro – Dark Theme */
+
 body {
-  font-family: Arial, sans-serif;
-  background: #0f0f0f;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #0d1117;
   color: #fff;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Header section */
-header {
-  background: #111;
+.auth-container {
+  background: #161b22;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+  width: 90%;
+  max-width: 400px;
   text-align: center;
-  padding: 15px 0;
-  border-bottom: 2px solid #0ff;
 }
 
-h1 {
-  color: #0ff;
-  margin: 0;
+h2 {
+  color: #00bcd4;
+  margin-bottom: 10px;
 }
 
-/* Dashboard summary cards */
-.dashboard {
+p {
+  color: #c9d1d9;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.form-toggle {
   display: flex;
   justify-content: space-around;
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
-.card {
-  background: #1b1b1b;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  width: 30%;
-}
-
-.card h3 {
-  color: #0ff;
-}
-
-/* New order form and orders table */
-.new-order,
-.orders-list {
-  background: #1b1b1b;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-input, select, button {
+.form-toggle button {
+  flex: 1;
   padding: 10px;
-  margin: 5px;
+  background: none;
   border: none;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-button {
-  background: #0ff;
-  color: #000;
+  color: #8b949e;
+  font-size: 15px;
   cursor: pointer;
-  font-weight: bold;
+  transition: 0.3s;
 }
 
-/* Table styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+.form-toggle button.active {
+  color: #fff;
+  border-bottom: 2px solid #00bcd4;
 }
 
-th, td {
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"] {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  color: #fff;
   padding: 10px;
-  border-bottom: 1px solid #333;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+input::placeholder {
+  color: #8b949e;
+}
+
+.remember {
   text-align: left;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.btn {
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-login {
+  background: #00bcd4;
+  color: #fff;
+}
+
+.btn-login:hover {
+  background: #0097a7;
+}
+
+.btn-signup {
+  background: #4caf50;
+  color: #fff;
+}
+
+.btn-signup:hover {
+  background: #43a047;
+}
+
+.msg {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #8b949e;
+}
+
+.hidden {
+  display: none;
 }
