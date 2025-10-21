@@ -1,38 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Add Funds</title>
   <style>
     body {
-      background-color: #0d0d0d;
-      color: #fff;
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
+      background: #0a0a0a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
     }
-    input, button {
+
+    .container {
+      background: #111;
+      padding: 20px 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,255,100,0.3);
+      max-width: 350px;
+    }
+
+    h2 {
+      color: #00ff77;
+    }
+
+    input {
+      width: 80%;
       padding: 10px;
-      margin: 10px;
+      margin: 10px 0;
       border: none;
       border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
     }
-    input {
-      width: 200px;
-    }
+
     button {
-      background-color: #00bcd4;
-      color: #fff;
+      background: #00ff77;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #00cc66;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .success {
+      color: #00ff77;
+      font-weight: bold;
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
-  <h2>💰 Add Funds</h2>
-  <input type="number" placeholder="Enter Amount (KSh)" />
-  <button>Add Funds</button>
-  <br><br>
-  <a href="menu.html" style="color:#00bcd4;text-decoration:none;">⬅ Back to Menu</a>
+  <div class="container">
+    <h2>Add Funds</h2>
+    <input type="number" id="amount" placeholder="Enter amount (Ksh 100–5000)" />
+    <button onclick="addFunds()">Add Funds</button>
+    <div id="message" class="message"></div>
+  </div>
+
+  <script>
+    function addFunds() {
+      const amountInput = document.getElementById("amount");
+      const message = document.getElementById("message");
+      const amount = parseInt(amountInput.value);
+
+      if (isNaN(amount) || amount < 100 || amount > 5000) {
+        message.style.color = "red";
+        message.textContent = "❌ Please enter an amount between Ksh 100 and 5000.";
+        return;
+      }
+
+      message.style.color = "#00ff77";
+      message.innerHTML = `💳 Please pay <b>Ksh ${amount}</b> to Till Number <b>6975729</b>.<br>
+      Once payment is made, your funds will be added shortly...`;
+
+      // Simulate confirmation after 1 minute (60000 ms)
+      setTimeout(() => {
+        message.classList.add("success");
+        message.innerHTML = `✅ Ksh ${amount} has been successfully deposited to your SMM Panel!`;
+      }, 60000);
+    }
+  </script>
 </body>
 </html>
