@@ -3,134 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Order - Kenya SMM Pro</title>
-  <link rel="stylesheet" href="style.css">
+  <title>New Order</title>
   <style>
     body {
-      background-color: #121212;
-      color: white;
-      font-family: "Poppins", sans-serif;
-      padding: 20px;
-    }
-
-    h2 {
+      background-color: #0d0d0d;
+      color: #fff;
+      font-family: Arial, sans-serif;
       text-align: center;
-      color: #00bcd4;
+      padding-top: 100px;
     }
-
-    .form-box {
-      background: #1b1b1b;
-      border-radius: 12px;
-      padding: 20px;
-      max-width: 450px;
-      margin: 0 auto;
-      box-shadow: 0 0 8px rgba(0,0,0,0.4);
-    }
-
-    label {
-      font-weight: 500;
-      display: block;
-      margin-top: 10px;
-    }
-
-    select, input {
-      width: 100%;
+    input, select, button {
+      margin: 10px;
       padding: 10px;
       border: none;
       border-radius: 8px;
-      margin-top: 5px;
-      background: #2a2a2a;
-      color: white;
+      width: 80%;
+      max-width: 300px;
     }
-
-    .charge-box {
-      margin-top: 15px;
-      padding: 10px;
-      background: #202020;
-      border-radius: 8px;
-      text-align: center;
-      color: #a0ffa0;
-      font-weight: bold;
-    }
-
-    .btn {
-      width: 100%;
-      margin-top: 15px;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
+    button {
+      background-color: #00bcd4;
+      color: #fff;
       cursor: pointer;
-    }
-
-    .btn.submit {
-      background: #00bcd4;
-      color: white;
-    }
-
-    .btn.addfunds {
-      background: #00c853;
-      color: white;
-    }
-
-    .error {
-      color: red;
-      text-align: center;
-      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <h2>🛒 New Order</h2>
-
-  <div class="form-box">
-    <label>Category</label>
-    <input type="text" id="category" readonly>
-
-    <label>Service</label>
-    <input type="text" id="service" readonly>
-
-    <label>Link</label>
-    <input type="text" id="link" placeholder="Enter your profile or post link">
-
-    <label>Quantity</label>
-    <input type="number" id="quantity" min="100" max="30000">
-
-    <div class="charge-box">
-      Charge: <span id="charge">Ksh 0</span>
-    </div>
-
-    <button class="btn submit" onclick="submitOrder()">Submit</button>
-    <button class="btn addfunds" onclick="window.location.href='addfunds.html'">Add Funds</button>
-
-    <div id="errorMessage" class="error"></div>
-  </div>
-
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const category = params.get('category');
-    const service = params.get('service');
-    const price = parseFloat(params.get('price'));
-    const quantity = parseInt(params.get('quantity'));
-
-    document.getElementById('category').value = category || '';
-    document.getElementById('service').value = service || '';
-    document.getElementById('quantity').value = quantity || 0;
-    document.getElementById('charge').innerText = 'Ksh ' + (price || 0);
-
-    let balance = 500; // Example user balance (to test)
-
-    function submitOrder() {
-      const charge = price;
-      if (balance < charge) {
-        document.getElementById('errorMessage').innerText = '❌ Insufficient funds — Add funds';
-        return;
-      }
-
-      document.getElementById('errorMessage').style.color = 'lightgreen';
-      document.getElementById('errorMessage').innerText = '✅ Order placed successfully! Your service will start soon.';
-    }
-  </script>
+  <h2>🆕 New Order</h2>
+  <select>
+    <option>Instagram Followers</option>
+    <option>Facebook Likes</option>
+    <option>Twitter Views</option>
+  </select><br>
+  <input type="text" placeholder="Enter Profile/Link"><br>
+  <input type="number" placeholder="Enter Quantity"><br>
+  <button>Submit Order</button>
+  <br><br>
+  <a href="menu.html" style="color:#00bcd4;text-decoration:none;">⬅ Back to Menu</a>
 </body>
-      </html>
+</html>
