@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kenyan SMM Panel - Menu</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00bcd4;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 15px;
+      border-bottom: 1px solid #333;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    li:hover {
+      background-color: #1f1f1f;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <span class="close-btn" onclick="window.history.back()">✖</span>
+  <h2>Kenyan SMM Panel</h2>
+  <ul>
+    <li onclick="window.location.href='dashboard.html'">New order</li>
+    <li onclick="window.location.href='addfunds.html'">Add funds</li>
+    <li onclick="alert('Services page coming soon')">Services</li>
+    <li onclick="alert('Orders page coming soon')">Orders</li>
+    <li onclick="alert('Tickets page coming soon')">Tickets</li>
+    <li onclick="alert('Refer and Earn coming soon')">Refer and Earn</li>
+    <li onclick="alert('Account settings coming soon')">Account</li>
+    <li onclick="alert('API Docs & Settings coming soon')">API Docs & Settings</li>
+    <li onclick="window.location.href='index.html'">Sign out</li>
+  </ul>
+</body>
+                                                               </html>
