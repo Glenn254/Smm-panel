@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Order</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    .order-box {
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .msg {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    .back {
+      display: block;
+      margin-top: 25px;
+      color: #00bfff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>🛒 Place Your Order</h2>
+
+  <div class="order-box">
+    <p><strong>Service:</strong> <span id="serviceName"></span></p>
+    <p><strong>Quantity:</strong> <span id="quantity"></span></p>
+    <p><strong>Price:</strong> Ksh <span id="price"></span></p>
+    <p><strong>Available Balance:</strong> Ksh <span id="balance"></span></p>
+
+    <input type="text" id="link" placeholder="Enter username or post link">
+    <button onclick="placeOrder()">Submit Order</button>
+
+    <p class="msg" id="message"></p>
+  </div>
+
+  <a href="services.html" class="back">← Back to Services</a>
+
+  <script>
+    // --- Initial Setup ---
+    if (!localStorage.getItem('balance')) {
+      localStorage.setItem('balance', '100'); // default Ksh 100
+    }
+
+    // --- Read order details from URL ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const service = urlParams.get('service');
+    const qty = urlParams.get('quantity');
+    const price = urlParams.get('price');
+
+    document.getElementById('serviceName').textContent = service || 'Unknown';
+    document.getElementById('quantity').textContent = qty || '0';
+    document.getElementById('price').textContent = price || '0';
+    document.getElementById('balance').textContent = localStorage.getItem('balance');
+
+    // --- Place Order Function ---
+    function placeOrder() {
+      const link = document.getElementById('link').value.trim();
+      const balance = parseFloat(localStorage.getItem('balance'));
+      const cost = parseFloat(price);
+      const msg = document.getElementById('message');
+
+      if (!link) {
+        msg.textContent = "Please enter your username or link ❗";
+        msg.style.color = "orange";
+        return;
+      }
+
+      if (balance < cost) {
+        msg.textContent = "Insufficient funds ❌";
+        msg.style.color = "red";
+      } else {
+        const newBalance = balance - cost;
+        localStorage.setItem('balance', newBalance.toString());
+        msg.textContent = "Order placed successfully ✅";
+        msg.style.color = "lime";
+        document.getElementById('balance').textContent = newBalance;
+      }
+    }
+  </script>
+</body>
+  </html>
