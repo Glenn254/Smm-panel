@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kenya SMM Pro - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #0d1117;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Top bar */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: #161b22;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .balance {
+      background: #00bcd4;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 18px;
+    }
+
+    .icons i {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .icons i:hover {
+      color: #00bcd4;
+    }
+
+    /* Social media list */
+    .social-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .social-item {
+      background: #161b22;
+      border-radius: 10px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .social-item:hover {
+      background: #1f2937;
+    }
+
+    .social-item img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .social-item span {
+      font-size: 15px;
+      color: #fff;
+    }
+
+    /* Bottom buttons */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #161b22;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.6);
+    }
+
+    .bottom-bar button {
+      background: none;
+      color: #fff;
+      border: none;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .bottom-bar button:hover {
+      color: #00bcd4;
+    }
+
+    /* Floating notification */
+    .floating-bell {
+      position: fixed;
+      bottom: 80px;
+      left: 15px;
+      background: #00bcd4;
+      border-radius: 50%;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    .floating-bell i {
+      color: #fff;
+      font-size: 20px;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="topbar">
+    <div class="balance">0.01 KSh</div>
+    <div class="icons">
+      <i class="fas fa-moon" title="Dark Mode"></i>
+      <i class="fas fa-dollar-sign" title="Currency"></i>
+      <i class="fas fa-bell" title="Notifications"></i>
+      <i class="fas fa-bars" id="menuBtn" title="Menu"></i>
+    </div>
+  </div>
+
+  <div class="social-list">
+    <div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"><span>Instagram</span></div>
+    <div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png"><span>Facebook</span></div>
+    <div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384017.png"><span>Twitter</span></div>
+    <div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png"><span>TikTok</span></div>
+    <div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"><span>YouTube</span></div>
+    <div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111624.png"><span>Spotify</span></div>
+    <div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/3670/3670226.png"><span>Threads</span></div>
+    <div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/145/145808.png"><span>Pinterest</span></div>
+    <div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"><span>Telegram</span></div>
+  </div>
+
+  <div class="bottom-bar">
+    <button id="newOrder">New Order</button>
+    <button id="massOrder">Mass Order</button>
+  </div>
+
+  <div class="floating-bell" id="bell">
+    <i class="fas fa-bell"></i>
+  </div>
+
+  <script>
+    // Redirect buttons to next steps
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      alert("Menu clicked! Next page setup coming soon ⚙️");
+      // window.location.href = "menu.html"; // next step page
+    });
+
+    document.getElementById("newOrder").addEventListener("click", () => {
+      alert("New Order clicked! We'll build this next 🛒");
+      // window.location.href = "neworder.html";
+    });
+
+    document.getElementById("massOrder").addEventListener("click", () => {
+      alert("Mass Order clicked! We'll add it next 📦");
+      // window.location.href = "massorder.html";
+    });
+
+    document.getElementById("bell").addEventListener("click", () => {
+      alert("Notifications feature coming soon 🔔");
+    });
+  </script>
+</body>
+  </html>
