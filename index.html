@@ -1,42 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kenya SMM Pro</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMM Panel - Sign In</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #0a0f1a;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-box {
+      background-color: #111827;
+      padding: 40px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    h2 {
+      color: #00c6ff;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #aaa;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #222;
+    }
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      font-weight: 500;
+      color: #aaa;
+    }
+    .tab.active {
+      color: #00c6ff;
+      border-bottom: 2px solid #00c6ff;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 6px;
+      background: #1f2937;
+      color: #fff;
+      font-size: 14px;
+    }
+    .remember {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+    .remember input {
+      width: auto;
+      margin-right: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00c6ff;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .signup-link {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #aaa;
+    }
+    .signup-link a {
+      color: #00c6ff;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="auth-container">
+  <div class="login-box">
     <h2>We are the Best SMM Panel in Kenya</h2>
     <p>Login or register to our system and start benefiting from our services immediately.</p>
 
-    <div class="form-toggle">
-      <button id="show-login" class="active">Sign In</button>
-      <button id="show-signup">Sign Up</button>
+    <div class="tabs">
+      <div class="tab active">Sign In</div>
+      <div class="tab">Sign Up</div>
     </div>
 
-    <!-- Login Form -->
-    <form id="login-form" class="form">
-      <input type="text" id="login-username" placeholder="Username" required />
-      <input type="password" id="login-password" placeholder="Password" required />
+    <form id="loginForm">
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
       <div class="remember">
-        <input type="checkbox" id="remember" />
+        <input type="checkbox" id="remember">
         <label for="remember">Remember me</label>
       </div>
-      <button type="submit" class="btn btn-login">SIGN IN</button>
-      <p class="msg">Are you a new member? Click Sign Up to get started 🎉</p>
+      <button type="submit">SIGN IN</button>
     </form>
 
-    <!-- Sign-Up Form -->
-    <form id="signup-form" class="form hidden">
-      <input type="text" id="signup-username" placeholder="Create Username" required />
-      <input type="password" id="signup-password" placeholder="Create Password" required />
-      <button type="submit" class="btn btn-signup">SIGN UP</button>
-      <p class="msg">Already have an account? Click Sign In to log in.</p>
-    </form>
+    <div class="signup-link">
+      Are you a new member? <a href="#">Click Sign Up to get started 🎉</a>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      // Instantly open the dashboard page
+      window.location.href = "dashboard.html";
+    });
+  </script>
 </body>
 </html>
