@@ -1,132 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SMM Panel - Sign In</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      background-color: #0a0f1a;
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .login-box {
-      background-color: #111827;
-      padding: 40px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      text-align: center;
-    }
-    h2 {
-      color: #00c6ff;
-      margin-bottom: 10px;
-    }
-    p {
-      color: #aaa;
-      font-size: 14px;
-      margin-bottom: 30px;
-    }
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #222;
-    }
-    .tab {
-      padding: 10px 20px;
-      cursor: pointer;
-      font-weight: 500;
-      color: #aaa;
-    }
-    .tab.active {
-      color: #00c6ff;
-      border-bottom: 2px solid #00c6ff;
-    }
-    input {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 6px;
-      background: #1f2937;
-      color: #fff;
-      font-size: 14px;
-    }
-    .remember {
-      display: flex;
-      align-items: center;
-      margin: 10px 0;
-      font-size: 14px;
-      color: #ccc;
-    }
-    .remember input {
-      width: auto;
-      margin-right: 8px;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #00c6ff;
-      border: none;
-      border-radius: 6px;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      opacity: 0.9;
-    }
-    .signup-link {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #aaa;
-    }
-    .signup-link a {
-      color: #00c6ff;
-      text-decoration: none;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kenya cheapest smm panel — Login</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="login-box">
-    <h2>We are the Best SMM Panel in Kenya</h2>
-    <p>Login or register to our system and start benefiting from our services immediately.</p>
-
-    <div class="tabs">
-      <div class="tab active">Sign In</div>
-      <div class="tab">Sign Up</div>
-    </div>
-
-    <form id="loginForm">
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
-      <div class="remember">
-        <input type="checkbox" id="remember">
-        <label for="remember">Remember me</label>
+<body class="bg">
+  <div class="center-wrap">
+    <div class="card login-card">
+      <div class="brand">
+        <div class="logo-circle">KS</div>
+        <div>
+          <h1 class="brand-title">Kenya cheapest smm panel</h1>
+          <p class="brand-sub">Simple • Fast • Reliable</p>
+        </div>
       </div>
-      <button type="submit">SIGN IN</button>
-    </form>
 
-    <div class="signup-link">
-      Are you a new member? <a href="#">Click Sign Up to get started 🎉</a>
+      <h2>Enter password to access dashboard</h2>
+
+      <div class="form-row">
+        <input id="password" type="password" placeholder="Password" />
+      </div>
+
+      <div class="form-row">
+        <button id="loginBtn" class="btn primary">Enter</button>
+      </div>
+
+      <p id="loginMsg" class="muted"></p>
+
+      <p class="small muted">Note: For live payments you will receive funds directly to your till. Use the Add Funds page to confirm manual payments.</p>
     </div>
   </div>
 
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      // Instantly open the dashboard page
-      window.location.href = "dashboard.html";
-    });
-  </script>
+  <script src="script.js"></script>
+  <script>initLoginPage();</script>
 </body>
 </html>
