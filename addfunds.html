@@ -6,14 +6,14 @@
   <title>Add Funds — Kenya cheapest smm panel</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="app">
-  <aside class="sidebar">
+<body class="app-dark">
+  <aside class="sidebar-dark">
     <div class="sidebar-top">
-      <div class="logo-circle">KS</div>
-      <h3>Kenya cheapest smm panel</h3>
+      <div class="logo">KS</div>
+      <div class="panel-name">Kenya cheapest smm panel</div>
     </div>
 
-    <nav>
+    <nav class="menu">
       <a href="dashboard.html">Dashboard</a>
       <a href="new-order.html">New Order</a>
       <a href="addfunds.html" class="active">Add Funds</a>
@@ -26,24 +26,33 @@
     </div>
   </aside>
 
-  <main class="main">
-    <header class="topbar"><h2>Add Funds</h2></header>
+  <main class="main-dark">
+    <header class="topbar-dark">
+      <h2>Add Funds</h2>
+      <div class="top-right">
+        <div class="user-id">👤 <span id="userIdTop">—</span></div>
+      </div>
+    </header>
 
-    <section class="content">
-      <div class="card">
+    <section class="content-dark">
+      <div class="card-dark form-card">
+        <label>User ID</label>
+        <input id="fundsUserId" type="text" readonly />
+
         <label>Amount (KES)</label>
         <input id="fundsAmount" type="number" min="10" value="100" />
 
         <label>Phone (for record)</label>
         <input id="fundsPhone" type="text" placeholder="2547XXXXXXXX" />
 
-        <div style="margin-top:12px;">
-          <p>Send the exact amount to this till number: <strong id="tillNumber">123456</strong></p>
+        <p class="muted">Send the amount to till: <strong id="tillNumber">6975729</strong></p>
+
+        <div class="form-actions">
           <button id="confirmPayBtn" class="btn primary">I have paid — Credit wallet</button>
-          <span id="payMsg" class="muted"></span>
+          <span id="payMsg" class="msg muted"></span>
         </div>
 
-        <p class="muted small" style="margin-top:12px">Manual mode: buyer pays directly to your till. After you confirm payment from your till records, click "I have paid" to credit the buyer's wallet (this simulates manual confirmation).</p>
+        <p class="small muted">Manual mode: buyer pays directly to your till (6975729). Confirm payment once you verify funds in your till.</p>
       </div>
     </section>
   </main>
@@ -51,9 +60,11 @@
   <script src="script.js"></script>
   <script>
     requireAuthOrRedirect();
-    document.getElementById('confirmPayBtn').addEventListener('click', confirmManualPayment);
-    // show till set in script.js when page loads
+    ensureUserId();
     document.getElementById('tillNumber').textContent = getTillNumber();
+    document.getElementById('fundsUserId').value = getUserId();
+    document.getElementById('userIdTop').textContent = getUserId();
+    document.getElementById('confirmPayBtn').addEventListener('click', confirmManualPayment);
   </script>
 </body>
 </html>
