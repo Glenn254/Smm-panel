@@ -1,75 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - SMM Panel</title>
-  <style>
-    body {
-      background-color: #0d0d0d;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .top-menu {
-      position: fixed;
-      top: 15px;
-      right: 20px;
-      z-index: 1000;
-    }
-    .menu-button {
-      background-color: #111;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 0 8px rgba(0,0,0,0.4);
-    }
-    .social-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      padding: 80px 20px 60px;
-    }
-    .social-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background-color: #1a1a1a;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 15px 0;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .social-btn:hover {
-      background-color: #333;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — Kenya cheapest smm panel</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="app">
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo-circle">KS</div>
+      <h3>Kenya cheapest smm panel</h3>
+    </div>
 
-  <div class="top-menu">
-    <button class="menu-button" onclick="window.location.href='menu.html'">☰</button>
-  </div>
+    <nav>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="new-order.html">New Order</a>
+      <a href="addfunds.html">Add Funds</a>
+      <a href="orders.html">Orders</a>
+      <a href="services.html">Services</a>
+    </nav>
 
-  <div class="social-container">
-    <button class="social-btn">Instagram</button>
-    <button class="social-btn">Facebook</button>
-    <button class="social-btn">Twitter</button>
-    <button class="social-btn">TikTok</button>
-    <button class="social-btn">YouTube</button>
-    <button class="social-btn">Spotify</button>
-    <button class="social-btn">Threads</button>
-    <button class="social-btn">Telegram</button>
-  </div>
+    <div class="sidebar-bottom">
+      <button id="logoutBtn" class="btn ghost">Logout</button>
+    </div>
+  </aside>
 
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h2>Dashboard</h2>
+        <p class="muted small">Welcome — quick overview</p>
+      </div>
+      <div class="top-actions">
+        <div class="wallet">Wallet: <span id="walletAmount">KES 0</span></div>
+      </div>
+    </header>
+
+    <section class="content">
+      <div class="grid">
+        <div class="card stat">
+          <h3>Total Orders</h3>
+          <p id="statTotalOrders">0</p>
+        </div>
+        <div class="card stat">
+          <h3>Pending Orders</h3>
+          <p id="statPendingOrders">0</p>
+        </div>
+        <div class="card stat">
+          <h3>Completed Orders</h3>
+          <p id="statCompletedOrders">0</p>
+        </div>
+        <div class="card stat">
+          <h3>Wallet Balance</h3>
+          <p id="statWallet">KES 0</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Recent Orders</h3>
+        <table class="orders-table" id="recentOrdersTable">
+          <thead>
+            <tr><th>Order ID</th><th>Service</th><th>Qty</th><th>Status</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    requireAuthOrRedirect();
+    renderDashboard();
+  </script>
 </body>
 </html>
