@@ -3,33 +3,382 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kenya cheapest smm panel — Login</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Kenya cheapest smm panel</title>
+  <style>
+    /* ---------- Colors & base ---------- */
+    :root{
+      --bg:#f7fbff;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --teal:#00bfa6;
+      --blue:#3b82f6;
+      --accent:#06b6d4;
+      --dark:#0f172a;
+      --glass: rgba(255,255,255,0.85);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#f3f9ff 0%, #ffffff 100%);color:#0b1220}
+    .wrap{max-width:1100px;margin:28px auto;padding:20px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--blue),var(--teal));color:white;font-weight:800;font-size:20px}
+    h1{margin:0;font-size:28px;color:var(--dark)}
+    p.lead{color:var(--muted);margin-top:6px}
+
+    /* ---------- password panel (centered modal) ---------- */
+    .pw-wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(12,18,24,0.45), rgba(12,18,24,0.35));z-index:40}
+    .pw-card{width:92%;max-width:480px;background:var(--card);border-radius:14px;padding:26px;box-shadow:0 10px 40px rgba(2,6,23,0.12);text-align:center}
+    .pw-card h2{margin:0 0 10px;color:var(--blue)}
+    .pw-card p{color:var(--muted);margin:0 0 18px}
+    .pw-card input{width:100%;padding:12px;border-radius:8px;border:1px solid #e6eef9;font-size:15px;margin-bottom:12px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--blue),var(--teal));color:white;box-shadow:0 8px 26px rgba(6,182,212,0.12)}
+    .muted{color:var(--muted)}
+    small.note{display:block;margin-top:10px;color:var(--muted)}
+
+    /* ---------- layout ---------- */
+    .topbar{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+    .top-actions{display:flex;gap:12px;align-items:center}
+    .pill{background:linear-gradient(90deg,#eef9ff,#f0fffb);padding:8px 12px;border-radius:999px;border:1px solid rgba(6,182,212,0.06)}
+    .grid{display:grid;grid-template-columns:1fr 380px;gap:18px;margin-top:20px}
+    @media (max-width:920px){ .grid{grid-template-columns:1fr} }
+
+    /* ---------- left column (main) ---------- */
+    .card{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 10px 30px rgba(11,18,32,0.04)}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    .section-title h3{margin:0;font-size:18px}
+    .services-table{width:100%;border-collapse:collapse}
+    .services-table th, .services-table td{padding:10px 12px;text-align:left;border-bottom:1px solid #f1f5f9}
+    .services-table th{background:linear-gradient(90deg,var(--teal),var(--blue));color:white;border:none}
+    .service-icon{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:white;font-weight:700;margin-right:10px}
+
+    .service-row{display:flex;align-items:center;gap:8px}
+    .order-btn{padding:8px 12px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--blue),var(--teal));color:white;cursor:pointer;font-weight:700}
+
+    /* ---------- right column (sidebar) ---------- */
+    .sidebar .card{margin-bottom:14px}
+    .stat{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#fbfeff;border-radius:10px;border:1px solid rgba(6,182,212,0.06)}
+    .stat .label{color:var(--muted);font-weight:700}
+    .stat .value{font-weight:800;color:var(--dark)}
+    .small-muted{color:var(--muted);font-size:13px}
+
+    /* ---------- forms ---------- */
+    label{display:block;color:var(--muted);margin-top:8px;font-weight:700}
+    input[type="number"], input[type="text"], select{width:100%;padding:10px;border-radius:8px;border:1px solid #e8f4fb;font-size:14px}
+    .form-row{margin-top:8px}
+
+    /* ---------- orders table ---------- */
+    .orders-table{width:100%;border-collapse:collapse;margin-top:8px}
+    .orders-table th, .orders-table td{padding:8px 10px;border-bottom:1px solid #eef6fb;font-size:13px;color:var(--muted)}
+    .status-pending{color:#b45309;font-weight:700}
+    .status-completed{color:#15803d;font-weight:700}
+
+    /* small footer */
+    .footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+  </style>
 </head>
-<body class="login-bg">
-  <div class="login-wrap">
-    <div class="login-card glass">
-      <div class="brand">
-        <div class="logo">KS</div>
-        <div class="brand-text">
-          <h1>Kenya cheapest smm panel</h1>
-          <p class="muted">Simple • Fast • Reliable</p>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">KS</div>
+      <div>
+        <h1>Kenya cheapest smm panel</h1>
+        <p class="lead">Simple • Fast • Reliable — Pay to Till <strong>6975729</strong></p>
+      </div>
+    </div>
+
+    <div class="topbar">
+      <div class="top-left">
+        <div class="pill">Welcome — <span id="userIdTop">Guest</span></div>
+      </div>
+      <div class="top-actions">
+        <div class="pill">Wallet: <strong id="walletTop">KES 0</strong></div>
+        <button id="logoutBtn" class="btn" style="background:transparent;color:var(--muted);border-radius:10px;border:1px solid #e6f6f9;padding:8px 10px">Logout</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- LEFT: Services, Orders, New Order -->
+      <div>
+        <!-- Services -->
+        <div class="card" id="servicesCard">
+          <div class="section-title">
+            <h3>Services</h3>
+            <div style="margin-left:auto" class="small-muted">Select a service to order</div>
+          </div>
+
+          <!-- services table -->
+          <table class="services-table" id="servicesTable">
+            <thead>
+              <tr><th>Service</th><th>Quantity</th><th style="width:140px">Price (KES)</th><th style="width:120px">Action</th></tr>
+            </thead>
+            <tbody>
+              <!-- rows created by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- New Order -->
+        <div class="card" style="margin-top:16px">
+          <div class="section-title"><h3>Place New Order</h3></div>
+          <div>
+            <label>Service</label>
+            <select id="orderService"></select>
+
+            <div class="form-row">
+              <label>Quantity</label>
+              <input id="orderQty" type="number" min="1" value="100" />
+            </div>
+
+            <div class="form-row">
+              <label>Target (username / URL / phone)</label>
+              <input id="orderTarget" type="text" placeholder="@username or link or phone" />
+            </div>
+
+            <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
+              <button id="placeOrder" class="order-btn">Place Order</button>
+              <div class="small-muted" id="orderMsg"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders list -->
+        <div class="card" style="margin-top:16px">
+          <div class="section-title"><h3>Your Orders</h3><div style="margin-left:auto" class="small-muted">Recent activity</div></div>
+          <table class="orders-table" id="ordersTable">
+            <thead><tr><th>Order ID</th><th>Service</th><th>Qty</th><th>Status</th></tr></thead>
+            <tbody></tbody>
+          </table>
         </div>
       </div>
 
-      <h2 class="title">Enter panel password</h2>
+      <!-- RIGHT: Wallet & Add Funds -->
+      <aside class="sidebar">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="small-muted">User ID</div>
+              <div style="font-weight:800" id="userIdDisplay">—</div>
+            </div>
+            <div style="text-align:right">
+              <div class="small-muted">Wallet</div>
+              <div style="font-weight:800" id="walletAmount">KES 0</div>
+            </div>
+          </div>
+        </div>
 
-      <div class="form">
-        <input id="password" type="password" placeholder="Password" autocomplete="off" />
-        <button id="loginBtn" class="btn primary">Open Dashboard</button>
-        <p id="loginMsg" class="msg muted"></p>
+        <div class="card">
+          <div class="section-title"><h3>Add Funds</h3></div>
+          <div>
+            <label>User ID</label>
+            <input id="fundUserId" type="text" readonly />
+
+            <label>Amount (KES)</label>
+            <input id="fundAmount" type="number" min="10" value="100" />
+
+            <label>Phone (for record)</label>
+            <input id="fundPhone" type="text" placeholder="2547XXXXXXXX" />
+
+            <div style="margin-top:10px;display:flex;gap:8px">
+              <button id="confirmPay" class="btn btn-primary">I paid to Till 6975729</button>
+              <div style="flex:1" id="payMsg" class="small-muted"></div>
+            </div>
+            <small class="note">When you receive the payment on your till, click the button to credit user's wallet (manual flow).</small>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="section-title"><h3>Quick Actions</h3></div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <button class="btn" onclick="showServices()">View Services</button>
+            <button class="btn" onclick="scrollToOrders()">View Orders</button>
+            <button class="btn" onclick="alert('Contact: WhatsApp +254...')">Support</button>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <div class="footer">Kenya cheapest smm panel • demo UI • Data saved locally in browser</div>
+  </div>
+
+  <!-- Password modal -->
+  <div class="pw-wrap" id="pwWrap">
+    <div class="pw-card">
+      <h2>Welcome to Kenya cheapest smm panel</h2>
+      <p>Enter the panel password to continue</p>
+      <input id="pwInput" type="password" placeholder="Password" />
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:8px">
+        <button id="pwBtn" class="btn btn-primary">Enter</button>
       </div>
-
-      <p class="small muted center">Dark theme — Manual till payments. Password: <strong>papanast254</strong></p>
+      <small class="note">Password required. No signup. Use the password you provided.</small>
     </div>
   </div>
 
-  <script src="script.js"></script>
-  <script>initLoginPage();</script>
+  <script>
+    /* ---------- config ---------- */
+    const CONFIG = {
+      PASSWORD: 'papanast254',
+      TILL: '6975729',
+      SERVICES: [
+        // The user-confirmed minimal example list (you can expand)
+        { id:'tt-follow', icon:'tiktok', name:'TikTok Followers', qtyLabel:'1,000', price:20 },
+        { id:'ig-likes', icon:'instagram', name:'Instagram Likes', qtyLabel:'1,000', price:25 },
+        { id:'yt-views', icon:'youtube', name:'YouTube Views', qtyLabel:'1,000', price:30 },
+        { id:'fb-follow', icon:'facebook', name:'Facebook Followers', qtyLabel:'1,000', price:20 },
+        { id:'tw-follow', icon:'twitter', name:'Twitter Followers', qtyLabel:'1,000', price:30 },
+        { id:'wa-subs', icon:'whatsapp', name:'WhatsApp Channel Subs', qtyLabel:'1,000', price:40 },
+        { id:'tg-subs', icon:'telegram', name:'Telegram Subscribers', qtyLabel:'1,000', price:35 }
+      ]
+    };
+
+    /* ---------- simple svg icon factory ---------- */
+    function getIconSVG(name){
+      // small clean SVG approximations and placeholders
+      if(name==='tiktok') return `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 2v12.5A4.5 4.5 0 1 1 7 10V2h2z" fill="#010101"/><path d="M15 3.5a4 4 0 0 0 4 4V10a6 6 0 1 1-6-6v-0.5" fill="#06b6d4"/></svg>`; 
+      if(name==='instagram') return `<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5" fill="url(#g)"/><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#feda75"/><stop offset="0.5" stop-color="#d62976"/><stop offset="1" stop-color="#962fbf"/></linearGradient></defs></svg>`;
+      if(name==='youtube') return `<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#FF0000"/><path d="M9 8l6 4-6 4V8z" fill="#fff"/></svg>`;
+      if(name==='facebook') return `<svg width="28" height="28" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#1877F2"/><path d="M15 8h-2a1 1 0 0 0-1 1v2H9v2h3v5h2v-5h2l1-2h-3V9a1 1 0 0 1 1-1h1V6z" fill="#fff"/></svg>`;
+      if(name==='twitter') return `<svg width="28" height="28" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#1DA1F2"/><path d="M19 7.5c-.5.3-1 .5-1.6.6.6-.4 1-1.1 1.2-1.8-.6.4-1.3.6-2 .8C15.5 6 14.7 6 14 6c-1 0-1.9.5-2.4 1.3-.6.1-1.1.1-1.8 0 .2-.5.4-1 .4-1.6C9.2 6 8 7 6.6 7c-.2 0-.5 0-.7-.1C6.8 7.6 7.9 8 9 8c-.6.3-1.1.6-1.5 1 .3 1 1.1 1.6 2 1.6-.5.4-1.1.6-1.7.6 0 .5.1 1 .4 1.4 1 1 2.4 1.3 3.6.9 1.6-1 2.6-2.6 2.6-4.3v-.2c.4-.3.8-.7 1.1-1.1-.4.2-.8.3-1.2.3z" fill="#fff"/></svg>`;
+      if(name==='whatsapp') return `<svg width="28" height="28" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#25D366"/><path d="M17 14c-.3 0-1 0-1.5-.1-.5 0-1.1.2-1.6.5-.4.2-1 .6-1.9.7C9.7 15.3 8.4 14.7 7.4 13.6c-.8-.8-1.2-1.8-1.2-2.9 0-2.3 1.9-4.2 4.2-4.2.8 0 1.4.2 2 .4v1.7c-.5-.2-1-.3-1.6-.3-1.2 0-2.1 1-2.1 2.1 0 .6.3 1.2.8 1.7.5.6 1.3 1 2.1 1 .4 0 .9-.1 1.4-.3.1 0 .3-.1.4-.1.4 0 .8.1 1.1.3-.1.1-.2.2-.3.3-.2.1-.6.2-1 .2z" fill="#fff"/></svg>`;
+      if(name==='telegram') return `<svg width="28" height="28" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#2AABEE"/><path d="M6 13l8-3 1-1-9 5 2 3z" fill="#fff"/></svg>`;
+      return `<div style="width:28px;height:28px;border-radius:6px;background:#ddd"></div>`;
+    }
+
+    /* ---------- storage helpers ---------- */
+    function sget(k, fallback){ try{ const v=localStorage.getItem(k); return v?JSON.parse(v):fallback }catch(e){return fallback} }
+    function sset(k,v){ localStorage.setItem(k, JSON.stringify(v)) }
+
+    /* ---------- boot ---------- */
+    function boot(){
+      if(!sget('kcsp_wallet')) sset('kcsp_wallet',{balance:0});
+      if(!sget('kcsp_orders')) sset('kcsp_orders',[]);
+      if(!sget('kcsp_userid')) sset('kcsp_userid', 'KCSP-'+Math.floor(1000+Math.random()*9000));
+    }
+
+    /* ---------- UI wiring ---------- */
+    document.addEventListener('DOMContentLoaded', ()=>{
+      boot();
+      // pw modal
+      const pwWrap = document.getElementById('pwWrap');
+      const pwBtn = document.getElementById('pwBtn');
+      const pwInput = document.getElementById('pwInput');
+      pwInput.addEventListener('keydown', e=>{ if(e.key==='Enter') pwBtn.click() });
+      pwBtn.addEventListener('click', ()=>{
+        if(pwInput.value === CONFIG.PASSWORD){
+          pwWrap.style.display='none';
+          initPanel();
+        } else {
+          alert('Wrong password');
+          pwInput.value='';
+          pwInput.focus();
+        }
+      });
+
+      // if already "authorized" in session this session, skip modal
+      if(sessionStorage.getItem('kcsp_auth')==='1'){
+        pwWrap.style.display='none'; initPanel();
+      }
+    });
+
+    function initPanel(){
+      sessionStorage.setItem('kcsp_auth','1');
+      document.getElementById('userIdDisplay').textContent = sget('kcsp_userid','-');
+      document.getElementById('userIdTop').textContent = sget('kcsp_userid','-');
+      document.getElementById('fundUserId').value = sget('kcsp_userid','-');
+      renderWallet();
+      renderServices();
+      populateOrderSelect();
+      renderOrders();
+
+      document.getElementById('confirmPay').addEventListener('click', confirmManualPayment);
+      document.getElementById('placeOrder').addEventListener('click', placeOrderFromUI);
+      document.getElementById('logoutBtn').addEventListener('click', ()=>{ sessionStorage.removeItem('kcsp_auth'); location.reload(); });
+    }
+
+    /* ---------- wallet ---------- */
+    function renderWallet(){ const w=sget('kcsp_wallet',{balance:0}); document.getElementById('walletAmount').textContent = 'KES '+w.balance; document.getElementById('walletTop').textContent='KES '+w.balance; document.getElementById('walletTop')?.classList; }
+    function confirmManualPayment(){
+      const amt = parseFloat(document.getElementById('fundAmount').value)||0;
+      const phone = document.getElementById('fundPhone').value||'';
+      if(amt < 10){ document.getElementById('payMsg').textContent='Minimum KES 10'; return; }
+      if(!confirm(`Credit KES ${amt} to user ${sget('kcsp_userid')}? (You should verify your till ${CONFIG.TILL})`)) return;
+      const w = sget('kcsp_wallet',{balance:0}); w.balance += amt; sset('kcsp_wallet', w);
+      // record topup
+      const ups = sget('kcsp_topups',[]); ups.unshift({id:'TP'+Date.now().toString().slice(-6), user:sget('kcsp_userid'), phone, amount:amt, at:new Date().toISOString()}); sset('kcsp_topups', ups);
+      document.getElementById('payMsg').textContent = `Credited KES ${amt}`; renderWallet(); renderOrders();
+    }
+
+    /* ---------- services ---------- */
+    function renderServices(){
+      const tbody = document.querySelector('#servicesTable tbody');
+      tbody.innerHTML = '';
+      CONFIG.SERVICES.forEach(s=>{
+        const tr = document.createElement('tr');
+        const svg = getIconSVG(s.icon);
+        tr.innerHTML = `<td><div style="display:flex;align-items:center"><div class="service-icon">${svg}</div><div><div style="font-weight:800">${s.name}</div><div class="small-muted">${s.qtyLabel}</div></div></div></td>
+                        <td>${s.qtyLabel}</td>
+                        <td>KES ${s.price}</td>
+                        <td style="text-align:center"><button class="order-btn" onclick="quickSelect('${s.id}')">Order</button></td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function populateOrderSelect(){
+      const sel=document.getElementById('orderService'); sel.innerHTML='';
+      CONFIG.SERVICES.forEach(s=>{ const o=document.createElement('option'); o.value=s.id; o.textContent=`${s.name} — KES ${s.price} / ${s.qtyLabel}`; sel.appendChild(o) });
+    }
+
+    function quickSelect(id){
+      document.getElementById('orderService').value = id;
+      window.scrollTo({top:document.getElementById('orderService').getBoundingClientRect().top + window.scrollY - 100, behavior:'smooth'});
+    }
+
+    /* ---------- orders ---------- */
+    function placeOrderFromUI(){
+      const svcId = document.getElementById('orderService').value;
+      const qty = parseInt(document.getElementById('orderQty').value) || 0;
+      const target = document.getElementById('orderTarget').value || '';
+      const msg = document.getElementById('orderMsg');
+      if(!qty || qty<=0){ msg.textContent='Enter valid quantity'; return; }
+      const svc = CONFIG.SERVICES.find(x=>x.id===svcId);
+      if(!svc){ msg.textContent='Select service'; return; }
+      const cost = svc.price * qty;
+      const w = sget('kcsp_wallet',{balance:0});
+      if(w.balance < cost){ msg.textContent = `Insufficient wallet. Need KES ${cost}`; return; }
+      // deduct
+      w.balance -= cost; sset('kcsp_wallet', w); renderWallet();
+      // create order
+      const orders = sget('kcsp_orders',[]);
+      const id = 'ORD'+Date.now().toString().slice(-7);
+      const order = { id, service:svc.name, qty, cost, target, status:'Pending', at:new Date().toISOString() };
+      orders.unshift(order); sset('kcsp_orders', orders);
+      msg.textContent = `Order placed ${id}`;
+      renderOrders();
+      setTimeout(()=>simulateDelivery(id), 3000);
+    }
+
+    function simulateDelivery(id){
+      const orders = sget('kcsp_orders',[]);
+      const idx = orders.findIndex(o=>o.id===id); if(idx===-1) return;
+      orders[idx].status = Math.random() < 0.95 ? 'Completed' : 'Failed';
+      sset('kcsp_orders', orders); renderOrders();
+    }
+
+    function renderOrders(){
+      const tbody = document.querySelector('#ordersTable tbody');
+      const orders = sget('kcsp_orders',[]);
+      tbody.innerHTML='';
+      orders.forEach(o=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td style="font-weight:700">${o.id}</td><td>${o.service}</td><td>${o.qty}</td><td class="${o.status==='Pending'?'status-pending':'status-completed'}">${o.status}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    /* ---------- helpers ---------- */
+    function showServices(){ window.scrollTo({top:document.getElementById('servicesCard').offsetTop-20, behavior:'smooth'}) }
+    function scrollToOrders(){ window.scrollTo({top:document.querySelector('#ordersTable').offsetTop-100, behavior:'smooth'}) }
+
+  </script>
 </body>
 </html>
