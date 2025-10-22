@@ -1,102 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Add Funds</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0a0a0a;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .container {
-      background: #111;
-      padding: 20px 30px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,255,100,0.3);
-      max-width: 350px;
-    }
-
-    h2 {
-      color: #00ff77;
-    }
-
-    input {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      text-align: center;
-    }
-
-    button {
-      background: #00ff77;
-      color: black;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    button:hover {
-      background: #00cc66;
-    }
-
-    .message {
-      margin-top: 15px;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .success {
-      color: #00ff77;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Add Funds — Kenya cheapest smm panel</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="container">
-    <h2>Add Funds</h2>
-    <input type="number" id="amount" placeholder="Enter amount (Ksh 100–5000)" />
-    <button onclick="addFunds()">Add Funds</button>
-    <div id="message" class="message"></div>
-  </div>
+<body class="app">
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo-circle">KS</div>
+      <h3>Kenya cheapest smm panel</h3>
+    </div>
 
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="new-order.html">New Order</a>
+      <a href="addfunds.html" class="active">Add Funds</a>
+      <a href="orders.html">Orders</a>
+      <a href="services.html">Services</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button id="logoutBtn" class="btn ghost">Logout</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar"><h2>Add Funds</h2></header>
+
+    <section class="content">
+      <div class="card">
+        <label>Amount (KES)</label>
+        <input id="fundsAmount" type="number" min="10" value="100" />
+
+        <label>Phone (for record)</label>
+        <input id="fundsPhone" type="text" placeholder="2547XXXXXXXX" />
+
+        <div style="margin-top:12px;">
+          <p>Send the exact amount to this till number: <strong id="tillNumber">123456</strong></p>
+          <button id="confirmPayBtn" class="btn primary">I have paid — Credit wallet</button>
+          <span id="payMsg" class="muted"></span>
+        </div>
+
+        <p class="muted small" style="margin-top:12px">Manual mode: buyer pays directly to your till. After you confirm payment from your till records, click "I have paid" to credit the buyer's wallet (this simulates manual confirmation).</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
   <script>
-    function addFunds() {
-      const amountInput = document.getElementById("amount");
-      const message = document.getElementById("message");
-      const amount = parseInt(amountInput.value);
-
-      if (isNaN(amount) || amount < 100 || amount > 5000) {
-        message.style.color = "red";
-        message.textContent = "❌ Please enter an amount between Ksh 100 and 5000.";
-        return;
-      }
-
-      message.style.color = "#00ff77";
-      message.innerHTML = `💳 Please pay <b>Ksh ${amount}</b> to Till Number <b>6975729</b>.<br>
-      Once payment is made, your funds will be added shortly...`;
-
-      // Simulate confirmation after 1 minute (60000 ms)
-      setTimeout(() => {
-        message.classList.add("success");
-        message.innerHTML = `✅ Ksh ${amount} has been successfully deposited to your SMM Panel!`;
-      }, 60000);
-    }
+    requireAuthOrRedirect();
+    document.getElementById('confirmPayBtn').addEventListener('click', confirmManualPayment);
+    // show till set in script.js when page loads
+    document.getElementById('tillNumber').textContent = getTillNumber();
   </script>
 </body>
 </html>
