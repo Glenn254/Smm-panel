@@ -6,14 +6,14 @@
   <title>Dashboard — Kenya cheapest smm panel</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="app">
-  <aside class="sidebar">
+<body class="app-dark">
+  <aside class="sidebar-dark">
     <div class="sidebar-top">
-      <div class="logo-circle">KS</div>
-      <h3>Kenya cheapest smm panel</h3>
+      <div class="logo">KS</div>
+      <div class="panel-name">Kenya cheapest smm panel</div>
     </div>
 
-    <nav>
+    <nav class="menu">
       <a href="dashboard.html" class="active">Dashboard</a>
       <a href="new-order.html">New Order</a>
       <a href="addfunds.html">Add Funds</a>
@@ -26,38 +26,39 @@
     </div>
   </aside>
 
-  <main class="main">
-    <header class="topbar">
+  <main class="main-dark">
+    <header class="topbar-dark">
       <div>
         <h2>Dashboard</h2>
-        <p class="muted small">Welcome — quick overview</p>
+        <p class="muted">Welcome — quick overview</p>
       </div>
-      <div class="top-actions">
-        <div class="wallet">Wallet: <span id="walletAmount">KES 0</span></div>
+      <div class="top-right">
+        <div class="user-id">👤 User ID: <span id="userIdDisplay">—</span></div>
+        <div class="wallet">Wallet: <strong id="walletAmount">KES 0</strong></div>
       </div>
     </header>
 
-    <section class="content">
-      <div class="grid">
-        <div class="card stat">
-          <h3>Total Orders</h3>
-          <p id="statTotalOrders">0</p>
+    <section class="content-dark">
+      <div class="cards-row">
+        <div class="card-dark stat">
+          <div class="stat-title">Total Orders</div>
+          <div class="stat-value" id="statTotalOrders">0</div>
         </div>
-        <div class="card stat">
-          <h3>Pending Orders</h3>
-          <p id="statPendingOrders">0</p>
+        <div class="card-dark stat">
+          <div class="stat-title">Pending Orders</div>
+          <div class="stat-value" id="statPendingOrders">0</div>
         </div>
-        <div class="card stat">
-          <h3>Completed Orders</h3>
-          <p id="statCompletedOrders">0</p>
+        <div class="card-dark stat">
+          <div class="stat-title">Completed Orders</div>
+          <div class="stat-value" id="statCompletedOrders">0</div>
         </div>
-        <div class="card stat">
-          <h3>Wallet Balance</h3>
-          <p id="statWallet">KES 0</p>
+        <div class="card-dark stat">
+          <div class="stat-title">Wallet Balance</div>
+          <div class="stat-value" id="statWallet">KES 0</div>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card-dark">
         <h3>Recent Orders</h3>
         <table class="orders-table" id="recentOrdersTable">
           <thead>
@@ -72,6 +73,7 @@
   <script src="script.js"></script>
   <script>
     requireAuthOrRedirect();
+    ensureUserId();
     renderDashboard();
   </script>
 </body>
