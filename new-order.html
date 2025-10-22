@@ -1,43 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Order</title>
-  <style>
-    body {
-      background-color: #0d0d0d;
-      color: #fff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding-top: 100px;
-    }
-    input, select, button {
-      margin: 10px;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      width: 80%;
-      max-width: 300px;
-    }
-    button {
-      background-color: #00bcd4;
-      color: #fff;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>New Order — Kenya cheapest smm panel</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <h2>🆕 New Order</h2>
-  <select>
-    <option>Instagram Followers</option>
-    <option>Facebook Likes</option>
-    <option>Twitter Views</option>
-  </select><br>
-  <input type="text" placeholder="Enter Profile/Link"><br>
-  <input type="number" placeholder="Enter Quantity"><br>
-  <button>Submit Order</button>
-  <br><br>
-  <a href="menu.html" style="color:#00bcd4;text-decoration:none;">⬅ Back to Menu</a>
+<body class="app">
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo-circle">KS</div>
+      <h3>Kenya cheapest smm panel</h3>
+    </div>
+
+    <nav>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="new-order.html" class="active">New Order</a>
+      <a href="addfunds.html">Add Funds</a>
+      <a href="orders.html">Orders</a>
+      <a href="services.html">Services</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button id="logoutBtn" class="btn ghost">Logout</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <h2>Place New Order</h2>
+      <div class="wallet">Wallet: <span id="walletAmount2">KES 0</span></div>
+    </header>
+
+    <section class="content">
+      <div class="card">
+        <label>Service</label>
+        <select id="serviceSelect"></select>
+
+        <label>Quantity</label>
+        <input id="orderQty" type="number" min="1" value="100" />
+
+        <label>Target (username / URL / phone)</label>
+        <input id="orderTarget" type="text" placeholder="@username or link or phone" />
+
+        <p class="muted small" style="margin-top:8px">Price shown is per unit. Total cost will be deducted from wallet.</p>
+
+        <div style="margin-top:12px;">
+          <button id="placeOrderBtn" class="btn primary">Place Order</button>
+          <span id="orderMsg" class="muted"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    requireAuthOrRedirect();
+    populateServices();
+    document.getElementById('placeOrderBtn').addEventListener('click', placeOrderFromUI);
+  </script>
 </body>
 </html>
